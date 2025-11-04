@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳门内港罕有街道影像集</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">澳门内港罕有街道影像集（GitHub Pages版）</h1>
+
+        <!-- 照片浏览区域 -->
+        <div class="photo-container">
+            <div class="photo-box">
+                <div id="loading" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="loading-spinner"></div>
+                    <div style="font-size: 20px; color: #666;">加载中... 正在读取照片</div>
+                </div>
+                <img id="current-photo" src="" alt="街景照片" style="display: none;">
+                <div id="error" class="error-message" style="display: none; padding: 20px;"></div>
+            </div>
+            <div class="photo-info" id="photo-info">照片名称：-- / 总数：--</div>
+            <div class="btn-group">
+                <button id="prev-btn" class="nav-btn" disabled>上一张</button>
+                <button id="next-btn" class="nav-btn" disabled>下一张</button>
+            </div>
+        </div>
+
+        <!-- 表单区域 -->
+        <div class="form-container">
+            <!-- 命令使用规则提示 -->
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <h4 style="color: #2c3e50; margin-bottom: 10px;">📌 命令使用规则</h4>
+                <p style="font-size: 14px; color: #666; line-height: 1.5;">
+                    1. 仅支持点击下方模板获取结构化命令，禁止手动输入/修改；<br>
+                    2. 命令无恶言、施压表述，尊重拍摄者劳动成果；<br>
+                    3. [PHOTO_NAME] 自动替换为当前照片名，[NEW_LOCATION]等需替换为具体参数；<br>
+                    4. 违规命令将不予处理，感谢理解。
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">联系邮箱（Contact Email）：</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="title">请求标题（Fixed Title）：</label>
+                <input type="text" id="title" value="Macau Rare Street Photo - Structured Request" readonly>
+            </div>
+            <div class="form-group">
+                <label for="content">结构化命令（仅支持模板生成）：</label>
+                <textarea id="content" rows="5" placeholder="点击下方模板获取命令，禁止手动输入" readonly></textarea>
+            </div>
+
+            <!-- 结构化常用命令模板 -->
+            <div class="template-group">
+                <div class="template-title">常用结构化命令（点击复制）</div>
+                <div class="template-list">
+                    <button class="template-btn" data-template="PHOTO_ADD|AREA=INNER_HARBOUR|DETAIL=REMOTE">请求补充：区域=内港 细节=偏僻区域</button>
+                    <button class="template-btn" data-template="PHOTO_OPTIMIZE|[PHOTO_NAME]|RESOLUTION=ORIGINAL">优化照片：[照片名] 分辨率=原始画质</button>
+                    <button class="template-btn" data-template="INFO_CORRECT|[PHOTO_NAME]|LOCATION=[NEW_LOCATION]">修正信息：[照片名] 拍摄地点=[新地点]</button>
+                    <button class="template-btn" data-template="INFO_ADD|[PHOTO_NAME]|DATE=[YYYY-MM-DD]">补充信息：[照片名] 拍摄日期=[年月日]</button>
+                    <button class="template-btn" data-template="PHOTO_OPTIMIZE|[PHOTO_NAME]|RESOLUTION=4K">优化照片：[照片名] 分辨率=4K</button>
+                </div>
+                <a href="./ALLCMD.html" target="_blank" style="display: inline-block; margin-top: 10px; color: #3498db;">查看完整结构化命令大全 →</a>
+                
+                <!-- 发送邮件按钮 -->
+                <div style="margin-top: 20px;">
+                    <button id="send-email-btn" class="send-email-btn">发送结构化命令邮件 →</button>
+                    <p style="font-size: 14px; color: #666; margin-top: 5px;">点击唤起邮件客户端，自动填充规范内容</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
